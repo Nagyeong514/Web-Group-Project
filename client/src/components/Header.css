@@ -36,3 +36,12 @@
     color: #ffe8a1 !important;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
+.nav-link.logout {
+    color: #e66464 !important; /* 붉은 계열 강조 */
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.nav-link.logout:hover {
+    color: #c73838 !important;
+}

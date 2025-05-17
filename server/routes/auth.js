@@ -158,3 +158,6 @@ router.put('/expenses/:id', verifyToken, async (req, res) => {
 });
 
 module.exports = router;
+
+// routes/auth.js
+// [  회원가입 /register   로그인 /login   보호된 /protected ]  API 관리

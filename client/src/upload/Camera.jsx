@@ -74,7 +74,7 @@ export default function Camera() {
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
-            alert('사진 업로드 및 분석 완료!');
+            alert('✅ 영수증이 성공적으로 업로드 및 분석되었습니다!');
             navigate('/gallery');
         } catch (err) {
             console.error('업로드 또는 분석 실패:', err);

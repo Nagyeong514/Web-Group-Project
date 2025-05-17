@@ -85,7 +85,10 @@ const MainPage = () => {
                 onClick={() => navigate('/report')}
             >
                 {goal ? (
-                    <div className="goal-display">📌 이번 달 목표 금액 : {formatCurrency(goal)}</div>
+                    <div className="goal-display">
+                        📌 이번 달 목표 금액 :
+                        <span style={{ fontWeight: 'bold', marginLeft: '5px' }}>{formatCurrency(goal)}</span>
+                    </div>
                 ) : (
                     <div className="goal-display">🎯 이번 달 목표가 설정되어 있지 않아요.</div>
                 )}
@@ -129,7 +132,13 @@ const MainPage = () => {
                     </div>
 
                     <div className="detail-button-wrapper">
-                        <button className="plus-button" onClick={() => navigate('/detail')}>
+                        {/* <button className="plus-button" onClick={() => navigate('/detail')}>
+                            자세히 보기
+                        </button> */}
+                        <button
+                            className="plus-button"
+                            onClick={() => navigate('/detail', { state: { selectedDate: selected } })}
+                        >
                             자세히 보기
                         </button>
                     </div>

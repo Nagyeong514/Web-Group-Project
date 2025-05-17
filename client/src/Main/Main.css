@@ -193,14 +193,19 @@ body {
 
 /* 🎯 이번 달 목표 */
 .goal-display {
-    width: auto;
-    text-align: center;
-    padding: 5px;
+    width: auto; /* ✅ 기존 너비 유지 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    height: 40px; /* ✅ 높이 명확히 줄임 (기존보다 작게) */
     font-weight: 450;
-    border: none;
     font-size: 18px;
-    margin-top: 10px;
+    margin: 25px auto 15px; /* 위아래 여백은 자연스럽게 */
+    border: none;
     border-radius: 8px;
+    background-color: #fcf6c9; /* 필요 시 유지 */
+    text-align: center;
+    line-height: 1.2;
 }
 
 .detail-button-wrapper {

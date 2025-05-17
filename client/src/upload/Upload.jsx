@@ -1,12 +1,10 @@
-// // clinet/src/upload/Upload.jsx
-
-// /client/src/upload/Upload.jsx
+// client/src/upload/Upload.jsx
 
 import React, { useRef } from 'react';
 import { FaCameraRetro } from 'react-icons/fa';
 import './upload.css';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // ✨ axios 추가
+import axios from 'axios';
 
 export default function Upload() {
     const fileInputRef = useRef(null);
@@ -42,7 +40,7 @@ export default function Upload() {
                 'http://localhost:5000/api/ocr/full-process',
                 {
                     imagePath: imagePath,
-                    receiptId: receiptId, // ✅ 필수! 같이 전달해야 400 오류 안 남
+                    receiptId: receiptId,
                 },
                 {
                     headers: {
@@ -51,7 +49,8 @@ export default function Upload() {
                 }
             );
 
-            // 3️⃣ 완료 후 갤러리 이동
+            // 3️⃣ 완료 후 알림 → 갤러리 이동
+            alert('✅ 영수증이 성공적으로 업로드 및 분석되었습니다!');
             navigate('/gallery');
         } catch (err) {
             console.error('❌ 업로드 또는 분석 실패:', err);
@@ -73,7 +72,6 @@ export default function Upload() {
                 <button className="camera-button" onClick={() => navigate('/camera')}>
                     촬영하기
                 </button>
-
                 <button className="camera-button" onClick={() => navigate('/gallery')}>
                     업로드한 영수증 보기
                 </button>

@@ -30,6 +30,13 @@ export default function Header({ onLogout }) {
             <Nav className="header-right">
                 <Nav.Link
                     as={NavLink}
+                    to="/Detail"
+                    className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+                >
+                    Detail
+                </Nav.Link>
+                <Nav.Link
+                    as={NavLink}
                     to="/report"
                     className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
                 >
@@ -53,12 +60,7 @@ export default function Header({ onLogout }) {
                 </Nav.Link>
 
                 {/* 로그아웃 처리 */}
-                <Nav.Link
-                    as={NavLink}
-                    to="/"
-                    className="nav-link"
-                    onClick={handleLogout} // 로그아웃 버튼 클릭 시 handleLogout 호출
-                >
+                <Nav.Link as={NavLink} to="/" className="nav-link logout" onClick={handleLogout}>
                     Logout
                 </Nav.Link>
             </Nav>

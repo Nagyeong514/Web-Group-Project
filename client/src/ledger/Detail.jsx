@@ -1,19 +1,22 @@
-// client/src/ledger/Detail.jsx
-
-// client/src/ledger/Detail.jsx
-
 import React, { useState, useEffect } from 'react';
 import CalendarHeader from './CalendarHeader';
 import { PiPencilLine } from 'react-icons/pi';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import axios from 'axios';
 import './detail.css';
-import { format } from 'date-fns'; // 상단에 꼭 추가
+import { format } from 'date-fns';
+import { useLocation } from 'react-router-dom'; // ✅ 추가
 
 const categories = ['음식', '쇼핑', '교통', '문화생활', '의료/기타'];
 
 export default function Detail() {
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const location = useLocation(); // ✅ 전달받은 날짜 가져오기
+
+    // ✅ 전달된 날짜가 있으면 사용, 없으면 오늘 날짜로
+    const [selectedDate, setSelectedDate] = useState(
+        location.state?.selectedDate ? new Date(location.state.selectedDate) : new Date()
+    );
+
     const [spendingList, setSpendingList] = useState([]);
 
     const formattedDate = selectedDate
