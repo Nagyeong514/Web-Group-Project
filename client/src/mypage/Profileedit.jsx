@@ -7,8 +7,6 @@ import './Edit.css';
 export default function Profileedit({ show, handleClose }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [age, setAge] = useState('');
     const [password, setPassword] = useState('');
 
     // ✅ 모달 열릴 때 사용자 정보 불러오기
@@ -23,8 +21,6 @@ export default function Profileedit({ show, handleClose }) {
                     });
                     setName(res.data.name || '');
                     setEmail(res.data.email || '');
-                    setPhone(res.data.phone || '');
-                    setAge(res.data.age || '');
                 } catch (err) {
                     console.error('❌ 사용자 정보 불러오기 실패:', err);
                 }
@@ -40,8 +36,6 @@ export default function Profileedit({ show, handleClose }) {
                 '/api/auth/me',
                 {
                     name,
-                    phone,
-                    age,
                     password,
                 },
                 {
