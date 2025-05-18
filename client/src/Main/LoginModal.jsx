@@ -1,7 +1,5 @@
 // client/src/Main/LoginModal.jsx
 
-// client/src/Main/LoginModal.jsx
-
 import React, { useState, useEffect } from 'react';
 import './Login.css';
 import axios from 'axios'; // ✅ axios 추가

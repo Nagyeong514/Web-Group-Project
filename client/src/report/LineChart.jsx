@@ -1,5 +1,4 @@
 // clinet/src/report/jsxLineChart.jsx
-
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend } from 'chart.js';
@@ -7,14 +6,17 @@ import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
 function LineChart({ expenses }) {
-    // 1. 날짜별 합계 계산
     const dateMap = {};
+
     expenses.forEach((item) => {
-        dateMap[item.date] = (dateMap[item.date] || 0) + item.amount;
+        const dateStr = item.date; // ✅ ReportPage에서 이미 가공된 date 필드 사용
+        if (dateStr) {
+            dateMap[dateStr] = (dateMap[dateStr] || 0) + item.amount;
+        }
     });
 
-    const labels = Object.keys(dateMap); // 날짜 리스트
-    const data = Object.values(dateMap); // 금액 리스트
+    const labels = Object.keys(dateMap).sort();
+    const data = labels.map((date) => dateMap[date]);
 
     const chartData = {
         labels,
