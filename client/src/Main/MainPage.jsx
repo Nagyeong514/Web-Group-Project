@@ -87,7 +87,7 @@ const MainPage = () => {
                 {goal ? (
                     <div className="goal-display">📌 이번 달 목표 금액 : {formatCurrency(goal)}</div>
                 ) : (
-                    <div className="goal-display">🎯 이번 달 목표가 설정되어 있지 않아요.</div>
+                    <div className="goal-display">🎯 이번 달 목표금액을 설정해주세요!</div>
                 )}
             </div>
 
@@ -110,20 +110,20 @@ const MainPage = () => {
                             )
                         }
                     />
-                    <div style={{ textAlign: 'center', marginTop: '10px' }}>
-                        <button className="upload-button" onClick={() => navigate('/upload')}>
-                            영수증 업로드
-                        </button>
-                    </div>
+                    {/* <div style={{ textAlign: 'center', marginTop: '10px' }}></div> */}
                 </div>
 
                 <div className="expense-section" style={{ flex: 5, padding: '10px' }}>
                     <h2 className="expense-title"> 🧾 {formattedDate} 지출 내역</h2>
+                    <hr></hr>
                     <div className="expense-box">
                         {categories.map((cat, index) => (
                             <div key={index} className="expense-item expense-filled expense-item-border">
-                                <span className="expense-name">{cat}</span>
-                                <span className="expense-amount">₩{formatCurrency(dailyExpensesData[cat] || 0)}</span>
+                                <span className="expense-name">&nbsp;&nbsp;{cat}</span>
+
+                                <span className="expense-amount">
+                                    {formatCurrency(dailyExpensesData[cat] || 0)}&nbsp;&nbsp;
+                                </span>
                             </div>
                         ))}
                     </div>
@@ -131,6 +131,9 @@ const MainPage = () => {
                     <div className="detail-button-wrapper">
                         <button className="plus-button" onClick={() => navigate('/detail')}>
                             자세히 보기
+                        </button>
+                        <button className="upload-button" onClick={() => navigate('/upload')}>
+                            영수증 업로드
                         </button>
                     </div>
                 </div>

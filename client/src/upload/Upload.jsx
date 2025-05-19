@@ -88,3 +88,86 @@ export default function Upload() {
         </div>
     );
 }
+
+// import React, { useRef } from 'react';
+// import { FaCameraRetro } from 'react-icons/fa';
+// import './upload.css';
+// import { useNavigate } from 'react-router-dom';
+// import axios from 'axios';
+
+// export default function Upload() {
+//     const fileInputRef = useRef(null);
+//     const navigate = useNavigate();
+
+//     const openFilePicker = () => {
+//         fileInputRef.current.click();
+//     };
+
+//     const handleFileChange = async (e) => {
+//         const file = e.target.files[0];
+//         if (!file) return;
+
+//         const formData = new FormData();
+//         formData.append('image', file);
+
+//         try {
+//             const token = localStorage.getItem('token');
+
+//             const uploadRes = await axios.post('http://localhost:5000/api/receipts/upload', formData, {
+//                 headers: {
+//                     'Content-Type': 'multipart/form-data',
+//                     Authorization: `Bearer ${token}`,
+//                 },
+//             });
+
+//             const { imagePath, receiptId } = uploadRes.data;
+
+//             await axios.post(
+//                 'http://localhost:5000/api/ocr/full-process',
+//                 { imagePath, receiptId },
+//                 {
+//                     headers: { Authorization: `Bearer ${token}` },
+//                 }
+//             );
+
+//             alert('✅ 영수증이 성공적으로 업로드 및 분석되었습니다!');
+//             navigate('/gallery');
+//         } catch (err) {
+//             console.error('❌ 업로드 또는 분석 실패:', err);
+//             alert('이미지 처리 중 오류가 발생했습니다.');
+//         }
+//     };
+
+//     return (
+//         <div className="upload-wrapper">
+//             <p className="text">
+//                 📷 영수증 사진을 촬영하거나,<br />
+//                 파일을 업로드해 주세요!
+//             </p>
+
+//             <div className="camera-icon">
+//                 <FaCameraRetro />
+//             </div>
+
+//             <div className="camera-button-group">
+//                 <button className="camera-button" onClick={openFilePicker}>
+//                     갤러리에서 이미지 불러오기
+//                 </button>
+//                 <button className="camera-button" onClick={() => navigate('/camera')}>
+//                     촬영하기
+//                 </button>
+//                 <button className="camera-button" onClick={() => navigate('/gallery')}>
+//                     업로드한 영수증 보기
+//                 </button>
+//             </div>
+
+//             <input
+//                 type="file"
+//                 accept="image/*"
+//                 ref={fileInputRef}
+//                 style={{ display: 'none' }}
+//                 onChange={handleFileChange}
+//             />
+//         </div>
+//     );
+// }
